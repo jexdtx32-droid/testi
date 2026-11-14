@@ -1,0 +1,125 @@
+:root {
+    --bg: #f2f0eb;
+    --ink: #14213d;
+    --muted: #5b6478;
+    --accent: #ff5a36;
+    --line: #d9d5cc;
+    color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --bg: #0f1729;
+        --ink: #f2f0eb;
+        --muted: #a7afc2;
+        --accent: #ff7a5c;
+        --line: #26324b;
+        color-scheme: dark;
+    }
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family:
+        "Inter",
+        system-ui,
+        -apple-system,
+        "Segoe UI",
+        sans-serif;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+main {
+    flex: 1;
+    display: grid;
+    place-content: center;
+    padding: 2rem 1.5rem;
+    max-width: 960px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+h1 {
+    font-family: "Bricolage Grotesque", "Inter", system-ui, sans-serif;
+    font-weight: 800;
+    font-size: clamp(3.5rem, 13vw, 9.5rem);
+    line-height: 0.92;
+    letter-spacing: -0.04em;
+    font-variation-settings: "opsz" 96;
+}
+
+.dot {
+    color: var(--accent);
+    display: inline-block;
+    animation: rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) 0.35s both;
+}
+
+.lead {
+    margin-top: 2rem;
+    max-width: 36ch;
+    font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+    color: var(--muted);
+}
+
+.rule {
+    margin-top: 3rem;
+    border: 0;
+    border-top: 1px solid var(--line);
+    width: 100%;
+}
+
+footer {
+    max-width: 960px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 1.25rem 1.5rem 1.75rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
+footer span:last-child {
+    color: var(--ink);
+}
+
+@keyframes rise {
+    from {
+        opacity: 0;
+        transform: translateY(0.15em);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .dot {
+        animation: none;
+    }
+}
+
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+}
